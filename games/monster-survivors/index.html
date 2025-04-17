@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Survivors - Thrilling Survival Action Game | UNCOS</title>
+    <meta name="description" content="Play Monster Survivors online - an intense survival action game where you battle endless waves of monsters with unique abilities and power-ups.">
+    <link rel="canonical" href="https://uncos.cn/games/monster-survivors/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-green': '#34C759',
+                        'apple-indigo': '#5856D6',
+                        'apple-orange': '#FF9500',
+                        'apple-pink': '#FF2D55',
+                        'apple-purple': '#AF52DE',
+                        'apple-red': '#FF3B30',
+                        'apple-teal': '#5AC8FA',
+                        'apple-yellow': '#FFCC00',
+                        'apple-gray': '#8E8E93',
+                        'apple-bg': '#F2F2F7',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style type="text/css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .game-container iframe {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 640px) {
+            .game-container {
+                height: 400px;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .game-container {
+                height: 500px;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .game-container {
+                height: 600px;
+            }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .game-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .game-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .game-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Monster Survivors",
+        "description": "An intense survival action game where you battle endless waves of monsters with unique abilities and power-ups.",
+        "genre": ["Action", "Survival", "Adventure"],
+        "url": "https://uncos.cn/games/monster-survivors/",
+        "image": "https://uncos.cn/images/games/monster-survivors-cover.jpg",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="bg-apple-bg text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center">
+                <span class="text-2xl font-bold text-apple-blue">UNCOS</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="/" class="hover:text-apple-blue transition-colors">All Games</a>
+                <a href="#features" class="hover:text-apple-blue transition-colors">Features</a>
+                <a href="#how-to-play" class="hover:text-apple-blue transition-colors">How to Play</a>
+                <a href="#about" class="hover:text-apple-blue transition-colors">About</a>
+            </nav>
+            <button class="md:hidden focus:outline-none" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 md:py-20 bg-gradient-to-br from-apple-blue to-apple-indigo text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Monster Survivors</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Survive the endless onslaught of monsters in this thrilling action-packed adventure.</p>
+            <a href="#play-now" class="game-btn bg-white text-apple-blue font-bold py-3 px-8 rounded-full text-lg inline-block shadow-lg">Play Now</a>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="play-now" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Play Monster Survivors</h2>
+            <div class="game-container mx-auto max-w-5xl">
+                <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" width="100%" height="100%" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-apple-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Game Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-red rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Fast-Paced Action</h3>
+                    <p class="text-gray-600 text-center">Experience non-stop action as you battle waves of monsters with increasing difficulty.</p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-green rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Character Progression</h3>
+                    <p class="text-gray-600 text-center">Level up your character and unlock powerful abilities to enhance your survival chances.</p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-purple rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Customizable Gameplay</h3>
+                    <p class="text-gray-600 text-center">Choose from various weapons and power-ups to create your own unique gameplay style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How to Play</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-blue">Controls</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>Use <strong>WASD</strong> or <strong>Arrow Keys</strong> to move your character</li>
+                        <li>Your character will automatically attack nearby enemies</li>
+                        <li>Press <strong>Space</strong> to use special abilities when available</li>
+                        <li>Collect experience orbs to level up and choose new abilities</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-apple-blue">Objective</h3>
+                    <p class="text-gray-700 mb-4">Survive as long as possible against endless waves of monsters. The longer you survive, the stronger you become, but the monsters also grow in number and strength.</p>
+                    <p class="text-gray-700">Collect power-ups, level up your abilities, and strategically navigate the map to maximize your survival time and achieve the highest score possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Game Section -->
+    <section id="about" class="py-16 bg-apple-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Monster Survivors</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
+                <p class="text-gray-700 mb-6">Monster Survivors is an action-packed survival game that draws inspiration from classic roguelike titles while adding its own unique twist. Players must navigate through procedurally generated environments while fighting off waves of increasingly difficult monsters.</p>
+                <p class="text-gray-700 mb-6">What sets Monster Survivors apart is its innovative progression system, allowing players to build their character in countless ways through ability combinations and strategic power-up selections. Each playthrough offers a different experience, ensuring hours of engaging gameplay.</p>
+                <p class="text-gray-700">The game features stunning visuals, immersive sound effects, and smooth controls that work seamlessly across both desktop and mobile devices. Whether you have a few minutes or hours to play, Monster Survivors offers an accessible yet deeply rewarding gaming experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section id="featured-games" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10">Popular Games</h2>
+            <div id="game-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-page-type="category" data-category="action">
+                <!-- 游戏卡片将由JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">UNCOS</h3>
+                    <p class="text-gray-400 max-w-xs">Providing high-quality online gaming experiences since 2023.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#play-now" class="text-gray-400 hover:text-white transition-colors">Play Now</a></li>
+                            <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/categories/action.html" class="text-gray-400 hover:text-white transition-colors">Action</a></li>
+                            <li><a href="/categories/adventure.html" class="text-gray-400 hover:text-white transition-colors">Adventure</a></li>
+                            <li><a href="/categories/puzzle.html" class="text-gray-400 hover:text-white transition-colors">Puzzle</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Support</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 UNCOS.CN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobile-menu">
+        <div class="bg-white h-full w-64 p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold text-apple-blue">UNCOS</span>
+                <button class="focus:outline-none" id="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="mb-6">
+                <form action="/search" method="get">
+                    <div class="relative">
+                        <input type="text" name="q" placeholder="搜索游戏..." class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:bg-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </form>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="/" class="py-2 hover:text-apple-blue transition-colors">首页</a>
+                <a href="#features" class="py-2 hover:text-apple-blue transition-colors">游戏特色</a>
+                <a href="#how-to-play" class="py-2 hover:text-apple-blue transition-colors">游戏指南</a>
+                <a href="#about" class="py-2 hover:text-apple-blue transition-colors">关于游戏</a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="/categories/action.html" class="py-2 hover:text-apple-blue transition-colors">动作游戏</a>
+                <a href="/categories/adventure.html" class="py-2 hover:text-apple-blue transition-colors">冒险游戏</a>
+                <a href="/categories/puzzle.html" class="py-2 hover:text-apple-blue transition-colors">益智游戏</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('button[aria-label="Menu"]');
+            const closeButton = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('#mobile-menu nav a');
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                });
+            }
+            
+            if (closeButton && mobileMenu) {
+                closeButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+            
+            if (mobileLinks && mobileMenu) {
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <script type="module" src="/js/game-cards.js"></script>
+</body>
+</html> 
