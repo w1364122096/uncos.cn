@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomb Runner - 3D Running Adventure Game | UNCOS</title>
+    <meta name="description" content="Play Tomb Runner online - a thrilling 3D running adventure game where you run, jump and slide to avoid obstacles and collect points.">
+    <link rel="canonical" href="https://uncos.cn/games/tomb-runner/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-green': '#34C759',
+                        'apple-indigo': '#5856D6',
+                        'apple-orange': '#FF9500',
+                        'apple-pink': '#FF2D55',
+                        'apple-purple': '#AF52DE',
+                        'apple-red': '#FF3B30',
+                        'apple-teal': '#5AC8FA',
+                        'apple-yellow': '#FFCC00',
+                        'apple-gray': '#8E8E93',
+                        'apple-bg': '#F2F2F7',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style type="text/css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .game-container iframe {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 640px) {
+            .game-container {
+                height: 400px;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .game-container {
+                height: 500px;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .game-container {
+                height: 600px;
+            }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .game-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .game-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .game-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* 游戏卡片悬停效果 */
+        .game-thumbnail-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9宽高比 */
+            overflow: hidden;
+        }
+        
+        .game-thumbnail-container img,
+        .game-thumbnail-container video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .static-thumb {
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dynamic-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* 悬停时的样式变化 */
+        .game-card:hover .static-thumb {
+            opacity: 0;
+        }
+        
+        .game-card:hover .dynamic-content {
+            opacity: 1;
+        }
+        
+        /* 添加简单的放大效果 */
+        .game-card:hover .game-thumbnail-container img,
+        .game-card:hover .game-thumbnail-container video {
+            transform: scale(1.05);
+        }
+        
+        /* 播放按钮 */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        
+        .game-card:hover .play-button {
+            opacity: 1;
+        }
+    </style>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Tomb Runner",
+        "description": "A thrilling 3D running adventure game where you run, jump and slide to avoid obstacles and collect points.",
+        "genre": ["Action", "Adventure", "3D"],
+        "url": "https://uncos.cn/games/tomb-runner/",
+        "image": "https://uncos.cn/images/games/tomb-runner-cover.jpg",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="bg-apple-bg text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="../../index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-apple-blue">UNCOS</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../../index.html" class="hover:text-apple-blue transition-colors">All Games</a>
+                <a href="#features" class="hover:text-apple-blue transition-colors">Features</a>
+                <a href="#how-to-play" class="hover:text-apple-blue transition-colors">How to Play</a>
+                <a href="#about" class="hover:text-apple-blue transition-colors">About</a>
+            </nav>
+            <button class="md:hidden focus:outline-none" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 md:py-20 bg-gradient-to-br from-apple-orange to-apple-red text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Tomb Runner</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">体验刺激的3D奔跑冒险游戏，跳跃、滑行和躲避障碍物，看看你能跑多远！</p>
+            <a href="#play-now" class="game-btn bg-white text-apple-red font-bold py-3 px-8 rounded-full text-lg inline-block shadow-lg">Play Now</a>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="play-now" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Play Tomb Runner</h2>
+            <div class="game-container mx-auto max-w-5xl">
+                <iframe src="https://www.y8.com/embed/tomb_runner" width="100%" height="100%" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-apple-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Game Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-orange rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">3D奔跑冒险</h3>
+                    <p class="text-gray-600 text-center">在精美的3D环境中奔跑，躲避陷阱和障碍物，体验紧张刺激的冒险。</p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-green rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">简单但具挑战性</h3>
+                    <p class="text-gray-600 text-center">容易上手但难以掌握的游戏玩法，适合各年龄段玩家，每次游戏都是新的挑战。</p>
+                </div>
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-apple-red rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">高分挑战</h3>
+                    <p class="text-gray-600 text-center">不断突破自己的记录，挑战全球玩家的高分，看看你能跑多远。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How to Play</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-apple-orange">Controls</h3>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>点击屏幕或按<strong>空格键</strong>跳跃</li>
+                        <li>下滑屏幕或按<strong>下箭头键</strong>下蹲，避开障碍物</li>
+                        <li>左右滑动或使用<strong>左右箭头键</strong>改变方向</li>
+                        <li>收集路途中的金币增加分数</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-apple-orange">Objective</h3>
+                    <p class="text-gray-700 mb-4">在这个无尽的奔跑游戏中，你的目标是尽可能地跑得更远。躲避障碍物，收集金币，提高你的分数。记住，随着游戏的进行，速度会越来越快，难度也会相应增加。</p>
+                    <p class="text-gray-700">注意地面上的陷阱和头顶的障碍物，选择正确的时机跳跃或下蹲。练习你的反应速度和时机掌握，成为Tomb Runner的高手！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Game Section -->
+    <section id="about" class="py-16 bg-apple-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Tomb Runner</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md">
+                <p class="text-gray-700 mb-6">Tomb Runner是一款类似Temple Run的3D跑酷游戏，玩家需要控制角色不断向前奔跑，并通过跳跃、下蹲和转向来躲避各种障碍物。</p>
+                <p class="text-gray-700 mb-6">游戏拥有精美的3D图形和流畅的操作体验，简单易上手但又充满挑战性。每次游戏都是不同的体验，你需要时刻保持警惕，因为一个错误可能就会结束整个游戏。</p>
+                <p class="text-gray-700">无论你是休闲玩家还是寻求挑战的游戏爱好者，Tomb Runner都能带给你紧张刺激的游戏体验。挑战自己，看看你能在这个危险的世界中跑多远！</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏来源与版权声明 -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-600">游戏由<a href="https://www.y8.com" class="text-apple-blue hover:underline" target="_blank">Y8.com</a>提供，版权归原作者所有。</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">UNCOS</h3>
+                    <p class="text-gray-400 max-w-xs">Providing high-quality online gaming experiences since 2023.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="../../index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#play-now" class="text-gray-400 hover:text-white transition-colors">Play Now</a></li>
+                            <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                        <ul class="space-y-2">
+                            <li><a href="../../categories/action.html" class="text-gray-400 hover:text-white transition-colors">Action</a></li>
+                            <li><a href="../../categories/adventure.html" class="text-gray-400 hover:text-white transition-colors">Adventure</a></li>
+                            <li><a href="../../categories/puzzle.html" class="text-gray-400 hover:text-white transition-colors">Puzzle</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Support</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 UNCOS.CN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobile-menu">
+        <div class="bg-white h-full w-64 p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold text-apple-blue">UNCOS</span>
+                <button class="focus:outline-none" id="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="mb-6">
+                <form action="../../search.html" method="get">
+                    <div class="relative">
+                        <input type="text" name="q" placeholder="搜索游戏..." class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:bg-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </form>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="../../index.html" class="py-2 hover:text-apple-blue transition-colors">首页</a>
+                <a href="#features" class="py-2 hover:text-apple-blue transition-colors">游戏特色</a>
+                <a href="#how-to-play" class="py-2 hover:text-apple-blue transition-colors">游戏指南</a>
+                <a href="#about" class="py-2 hover:text-apple-blue transition-colors">关于游戏</a>
+                <div class="border-t border-gray-200 my-2"></div>
+                <a href="../../categories/action.html" class="py-2 hover:text-apple-blue transition-colors">动作游戏</a>
+                <a href="../../categories/adventure.html" class="py-2 hover:text-apple-blue transition-colors">冒险游戏</a>
+                <a href="../../categories/puzzle.html" class="py-2 hover:text-apple-blue transition-colors">益智游戏</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('button[aria-label="Menu"]');
+            const closeButton = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('#mobile-menu nav a');
+            
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                });
+            }
+            
+            if (closeButton && mobileMenu) {
+                closeButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+            
+            if (mobileLinks && mobileMenu) {
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- 游戏数据和卡片生成脚本 -->
+    <script src="../../js/games.js"></script>
+    <script src="../../js/game-cards.js"></script>
+
+    <!-- JavaScript for dynamic content -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCards = document.querySelectorAll('.game-card');
+            
+            gameCards.forEach(card => {
+                const video = card.querySelector('video');
+                
+                if (video) {
+                    card.addEventListener('mouseenter', () => {
+                        video.play();
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
